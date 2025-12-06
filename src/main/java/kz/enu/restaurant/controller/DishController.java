@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**
+ * REST-контроллер для работы с блюдами меню.
+ * Предоставляет API для получения списка блюд и деталей конкретного блюда.
+ */
 @RestController
 @RequestMapping("/api/dishes")
 @CrossOrigin(origins = "*")   // чтобы фронтенд с другого origin мог делать запросы
@@ -19,7 +22,11 @@ public class DishController {
     public DishController(MenuService menuService) {
         this.menuService = menuService;
     }
-
+    /**
+     * Возвращает перечень всех блюд меню в кратком виде.
+     *
+     * @return список DTO с основными характеристиками блюд
+     */
     @GetMapping
     public List<DishDto> getAllDishes() {
         List<Dish> dishes = menuService.getAllDishes();
@@ -33,7 +40,12 @@ public class DishController {
                 ))
                 .collect(Collectors.toList());
     }
-
+    /**
+     * Возвращает подробную информацию по одному блюду.
+     *
+     * @param id идентификатор блюда
+     * @return HTTP 200 и данные блюда или 404, если блюдо не найдено
+     */
     @GetMapping("/{id}")
     public ResponseEntity<DishDetailsDto> getDish(@PathVariable("id") long id) {
         return menuService.getDishById(id)

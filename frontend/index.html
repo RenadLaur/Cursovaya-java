@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Ресторанное меню – калорийность и стоимость</title>
+
+    <!-- Красивый шрифт -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+    <header class="app-header">
+        <div class="brand">
+            <div class="logo-circle">RM</div>
+            <div class="brand-text">
+                <h1>Restaurant Menu</h1>
+                <p>Расчёт калорийности и стоимости блюд</p>
+            </div>
+        </div>
+        <div class="header-meta">
+            <span class="badge">REST API · Java / Spring Boot</span>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <!-- Левая панель: список блюд -->
+        <section class="card card-list">
+            <div class="card-header">
+                <div>
+                    <h2>Список блюд</h2>
+                    <p class="card-subtitle">Выбери блюдо, чтобы увидеть подробный состав.</p>
+                </div>
+                <div class="card-actions">
+                    <div class="search-wrapper">
+                        <input id="search-input"
+                               type="text"
+                               placeholder="Поиск по названию..."
+                               autocomplete="off">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="dishes-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Название</th>
+                        <th>Тип</th>
+                        <th>Калории, ккал</th>
+                        <th>Стоимость, тг</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- строки добавятся через JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="list-message" class="message"></div>
+        </section>
+
+        <!-- Правая панель: детали блюда -->
+        <section class="card card-details">
+            <div class="card-header">
+                <div>
+                    <h2>Детали блюда</h2>
+                    <p class="card-subtitle">Информация о составе, калорийности и стоимости.</p>
+                </div>
+            </div>
+            <div id="dish-details" class="details">
+                <div class="placeholder">
+                    <h3>Блюдо не выбрано</h3>
+                    <p>Нажми на любое блюдо слева, чтобы посмотреть его состав.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <span>Курсовая работа · ENU · Java OOP + Web</span>
+    </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
