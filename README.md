@@ -137,7 +137,9 @@ Cursovaya-java/
 └─ frontend/
    ├─ index.html
    ├─ styles.css
-   └─ app.js
+   └─ app.js```
+   
+---
 
 ## 6. Запуск backend (Spring Boot)
 Через IntelliJ IDEA
