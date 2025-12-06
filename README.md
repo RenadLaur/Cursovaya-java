@@ -138,3 +138,107 @@ Cursovaya-java/
    ├─ index.html
    ├─ styles.css
    └─ app.js
+
+## 6. Запуск backend (Spring Boot)
+Через IntelliJ IDEA
+Открыть проект как Maven-проект.
+Найти класс RestaurantApplication (kz.enu.restaurant.RestaurantApplication).
+Нажать Run (зелёный треугольник).
+Убедиться, что в логах есть строка вроде:
+Tomcat started on port(s): 8080
+Started RestaurantApplication
+
+Проверить в браузере:
+http://localhost:8080/api/dishes
+http://localhost:8080/api/dishes/1
+Через Maven (из терминала)
+mvn spring-boot:run
+По умолчанию backend запускается на порту 8080.
+
+## 7. Запуск frontend
+Frontend — это статический HTML/JS, обращающийся к REST API по адресу http://localhost:8080/api/dishes.
+Убедиться, что backend запущен.
+Открыть папку frontend/ в проводнике.
+Дважды щёлкнуть по index.html, чтобы открыть его в браузере.
+<img width="1495" height="950" alt="image" src="https://github.com/user-attachments/assets/e91dc991-e32a-470c-b9b0-d6080f227d84" />
+
+Интерфейс:
+слева — таблица блюд (ID, название, тип, калории, стоимость);
+сверху — строка поиска по названию;
+при клике на строку слева справа отображаются:
+тип блюда;
+общая калорийность;
+общая стоимость;
+таблица ингредиентов (название, масса, калории, стоимость).
+
+## 8. REST API
+GET /api/dishes
+Возвращает список всех блюд в кратком виде.
+
+Пример ответа:
+
+[
+  {
+    "id": 1,
+    "name": "Куриное филе с рисом",
+    "type": "MAIN_COURSE",
+    "totalCalories": 520.5,
+    "totalCost": 850.00
+  },
+  {
+    "id": 2,
+    "name": "Блинчики с сахаром",
+    "type": "DESSERT",
+    "totalCalories": 430.0,
+    "totalCost": 320.00
+  }
+]
+
+GET /api/dishes/{id}
+Возвращает подробную информацию по одному блюду.
+
+Пример ответа:
+
+{
+  "id": 1,
+  "name": "Куриное филе с рисом",
+  "type": "MAIN_COURSE",
+  "totalCalories": 520.5,
+  "totalCost": 850.0,
+  "ingredients": [
+    {
+      "ingredientName": "Куриное филе",
+      "grams": 200.0,
+      "calories": 330.0,
+      "cost": 440.0
+    },
+    {
+      "ingredientName": "Рис",
+      "grams": 150.0,
+      "calories": 190.5,
+      "cost": 90.0
+    }
+  ]
+}
+
+При ошибках чтения CSV или внутренних сбоях REST-слой возвращает структурированный JSON с полями message, details, timestamp.
+
+## 9. Логирование и обработка ошибок
+Для регистрации событий и ошибок используется SLF4J + Logback.
+В FileMenuRepository логируются:
+успешная загрузка ингредиентов и блюд;
+пропуск некорректных строк CSV;
+ошибки чтения и парсинга файлов.
+Класс MenuDataException служит для ошибок уровня данных.
+GlobalExceptionHandler (@RestControllerAdvice) перехватывает исключения и возвращает пользователю понятный JSON-ответ с описанием ошибки.
+
+## 10. Для курсовой работы
+Данный проект демонстрирует:
+применение принципов ООП (инкапсуляция, наследование, полиморфизм, абстракция);
+многослойную архитектуру (model–repository–service–controller–frontend);
+работу с файлами (CSV) для хранения данных;
+использование web-технологий (REST API + HTML/CSS/JS);
+обработку исключений и логирование;
+документирование кода с помощью Javadoc.
+
+Ссылка на данный репозиторий может быть указана в Приложении А курсовой работы как исходный код реализации.
