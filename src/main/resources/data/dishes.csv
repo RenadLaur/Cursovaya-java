@@ -1,0 +1,3 @@
+# dishId;dishName;type;ingredientId:grams,ingredientId:grams
+1;Куриное филе с рисом;MAIN_COURSE;1:200,3:150,2:10
+2;Блинчики с сахаром;DESSERT;6:80,7:50,5:20,2:5
