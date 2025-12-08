@@ -38,6 +38,16 @@
                     <p class="card-subtitle">Выбери блюдо, чтобы увидеть подробный состав.</p>
                 </div>
                 <div class="card-actions">
+                    <!-- Табы по типам блюд -->
+                    <div class="type-tabs" id="type-tabs">
+                        <button class="type-tab active" data-type="ALL">Все</button>
+                        <button class="type-tab" data-type="STARTER">Закуски</button>
+                        <button class="type-tab" data-type="MAIN_COURSE">Основные</button>
+                        <button class="type-tab" data-type="DESSERT">Десерты</button>
+                        <button class="type-tab" data-type="BEVERAGE">Напитки</button>
+                    </div>
+
+                    <!-- Поиск -->
                     <div class="search-wrapper">
                         <input id="search-input"
                                type="text"
@@ -57,6 +67,7 @@
                         <th>Тип</th>
                         <th>Калории, ккал</th>
                         <th>Стоимость, тг</th>
+                        <th>Заказ</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -67,7 +78,7 @@
             <div id="list-message" class="message"></div>
         </section>
 
-        <!-- Правая панель: детали блюда -->
+        <!-- Правая панель: детали блюда + заказ -->
         <section class="card card-details">
             <div class="card-header">
                 <div>
@@ -80,6 +91,16 @@
                     <h3>Блюдо не выбрано</h3>
                     <p>Нажми на любое блюдо слева, чтобы посмотреть его состав.</p>
                 </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Панель корзины -->
+            <div class="cart-panel" id="cart-panel">
+                <h2>Ваш заказ</h2>
+                <p id="cart-summary">Заказ пуст</p>
+                <ul id="cart-items"></ul>
+                <button id="clear-cart-btn" type="button">Очистить заказ</button>
             </div>
         </section>
     </main>
